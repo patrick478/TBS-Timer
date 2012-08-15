@@ -7,8 +7,9 @@ var currentTime = 0;
 // 1 == rehearse
 var mode = 0;
 
-var prepareTime = 120;
+var prepareTime = 60;
 var rehearseTime = 900;
+var cooldownTime = 60;
 
 $(document).ready(function() {
 	$('.center_pane_close').click(function() {
@@ -44,6 +45,8 @@ $(document).ready(function() {
 		var field = $(this).prop('name');
 		if(field == 'vspace')
 			$('#clock').css('margin-top', $(this).val() + "px");
+		else if(field == 'fontsize')
+			$('#clock').css('font-size', $(this).val() + "pt");
 		else if(field == 'prepare')
 			prepareTime = $(this).val();
 		else if(field == 'rehearse')
@@ -77,8 +80,10 @@ function tick()
 	
 	if(mode == 0)
 		max = prepareTime;
-	else
+	else if(mode == 1)
 		max =  rehearseTime;
+	else
+		max = cooldownTime;
 		
 	var percent = (((max - currentTime) / max) * 100)+1 + '%';
 	$('.slider').stop().animate({width: percent}, 1100);
@@ -97,6 +102,11 @@ function finished()
 	if(mode == 1) {
 		$('#prepare_mode').removeClass('active_mode');
 		$('#warmup_mode').addClass('active_mode');
+		setupTimers();
+		start();
+	} else if(mode == 2) {
+		$('#warmup_mode').removeClass('active_mode');
+		$('#cooldown_mode').addClass('active_mode');
 		setupTimers();
 		start();
 	}

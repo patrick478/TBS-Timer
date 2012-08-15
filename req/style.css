@@ -60,6 +60,7 @@ body {
 .display.bottom:hover {
 	border: 1px solid #999;
 	background-color: #555;
+	color: white;
 }
 
 .display.top {
@@ -71,7 +72,7 @@ body {
 	cursor: pointer;
 }
 
-#prepare_mode, #start_button {
+#prepare_mode, #start_button, #warmup_mode {
 	margin-right: 20px;
 }
 
