@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<script type="text/javascript" src="req/js/jquery-1.7.2.min.js"></script>
+		<script type="text/javascript" src="req/js/countdown.js"></script>
+		<link rel="stylesheet" href="req/style.css" />
+	</head>
+
+	<body>		
+	
+		<!-- Begin code for the About Window -->
+		<div class="center_pane" id="about_pane">
+			
+			<div class="center_pane_content">
+				<h1>About</h1>
+				
+				<h3>Acidic Labs / Singing Timer</h3>
+				
+				Notable features:
+				<ul>
+					<li>Horribly hacked together using position: fixed</li>
+					<li>Powered entirely using client-side code (not new, but still cool!)</li>
+				</ul>
+				
+				<br /><br />
+				
+				Requires a browser which supports css <i>box-sizing</i>. Almost all of them do. I added the -moz prefixed version also because Mozilla just can't seem to catch Firefox up on this one. D:
+				
+				<br /><br /><br /><br />
+				
+				Written by Ben Anderson &lt;<a href="mailto:benanderson@acidic.co.nz">benanderson@acidic.co.nz</a>&gt;.<br />Feel free to contact me if you'd like to ask any questions about anything regarding
+				this, or other Acidic Labs.
+			</div>
+			
+			<div class="center_pane_close">Close</div>
+		</div>
+		<!-- End About Window code -->
+		
+		<!-- Begin code for the Settings Window -->
+		<div class="center_pane" id="settings_pane">
+			
+			<div class="center_pane_content">
+				<h1>Settings</h1>
+				
+				<table>
+					<tr><td>Vertical Spacing</td><td><input type="text" name="vspace" value="100" /></td></tr>
+					<tr><td colspan="2">&nbsp;</td></tr>
+					<tr><td colspan="2">Requires Reset to take effect</td></tr>
+					<tr><td>Prepare Time</td><td><input type="text" name="prepare" value="120" /></td></tr>
+					<tr><td>Rehearse Time</td><td><input type="text" name="rehearse" value="900" /></td></tr>
+				</table>
+				
+			</div>
+			
+			<div class="center_pane_close">Close</div>
+		</div>
+		<!-- End Settings Window code -->
+		
+		<!-- Top bar which shows which mode -->
+		<div class="bar" id="top_bar">	
+			<div class="display top active_mode" id="prepare_mode">Get Ready</div>
+			<div class="display top" id="warmup_mode">Rehearse</div>
+		</div>
+		
+		<!-- Top time slider -->
+		<div class="slider" id="top_slider"></div>
+		
+		<!-- Main container holding the clock -->
+		<div id="clock">
+			2:00
+		</div>
+
+		<!-- Bottom time slider -->
+		<div class="slider" id="bottom_slider"></div>
+		
+		<!-- Bottom bar showing start / reset buttons -->
+		<div class="bar" id="bottom_bar">
+			<div class="display bottom" id="start_button">Start</div>
+			<div class="display bottom" id="reset_button">Reset</div>			
+		</div>
+		
+		<!-- Settings / About buttons -->
+		<div id="info">
+			<a href="#" id="settings_text">settings</a>&nbsp;&nbsp;<a href="#" id="about_text">about</a>
+		</div>
+	</body>
+</html>

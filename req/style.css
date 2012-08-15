@@ -1,0 +1,192 @@
+* {
+	margin: 0px;
+	padding: 0px;
+	box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	-webkit-font-smoothing: antialiased;
+}
+
+body {
+	background: #333;
+}
+
+.bar {
+	background-color: #111;
+	height: 90px;
+	width: 100%;
+	text-align: center;
+	position: fixed;
+	z-index: 2;
+}
+
+#top_bar {
+	top: 0px;
+	
+}
+
+#bottom_bar {
+	bottom: 0px;
+	padding-top: 10px;
+}
+
+.slider {
+	position: fixed;
+	width: 0%;
+	height: 12px;
+	background-color: #aaa;
+}
+
+#top_slider {
+	top: 90px;
+}
+
+#bottom_slider {
+	bottom: 90px;
+}
+
+.display {
+	box-sizing: border-box;
+	width: 400px;
+	height: 80px;
+	background: #222;
+	border: 1px solid #666;
+	display: inline-block;
+	font-family: Arial;
+	line-height: 80px;
+	color: #555;
+	font-size: 22pt;
+}
+
+.display.bottom:hover {
+	border: 1px solid #999;
+	background-color: #555;
+}
+
+.display.top {
+	border-top: 0px;
+}
+
+.display.bottom {
+	border-bottom: 0;
+	cursor: pointer;
+}
+
+#prepare_mode, #start_button {
+	margin-right: 20px;
+}
+
+#clock {
+	z-index: 1;
+	position: fixed;
+	top: 98px;
+	color: white;
+	text-align: center;
+	width: 100%;
+	margin-top: 100px;
+	font-size: 192pt;
+	font-family: Lucida Console, Monaco5, monospace;
+}
+
+#info {
+	position: fixed;
+	right: 0px;
+	bottom: 0px;
+	padding-right: 8px;
+	font-family: Arial;
+	font-size: 10pt;
+	color: #444;
+	z-index: 9;
+}
+
+#info a {
+	color: #444;
+	text-decoration: none;
+}
+
+#info a:hover {
+	color: #EEE;
+}
+
+.center_pane {
+	z-index: 5;
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	width: 600px;
+	height: 600px;
+	background: #222;
+	border: 1px solid #AAA;
+	color: white;
+	margin-left: -300px;
+	margin-top: -300px;
+	font-family: Arial;
+	display: none;
+}
+
+
+
+.center_pane table{
+	width: 100%;
+}
+
+.center_pane table td {
+	text-align: right;
+}
+
+.center_pane table td[colspan='2'] {
+	text-align: center;
+}
+
+.center_pane_close {
+	position: absolute;
+	bottom: 0px;
+	width: 100%;
+	font-family: Arial;
+	color: #666;
+	cursor: pointer;
+	border-top: 1px solid #AAA;
+	background-color: #111;
+	padding: 5px;
+	text-align: right;
+}
+
+.center_pane_close:hover {
+	color: #000;
+	background-color: #EEE;
+}
+
+.center_pane_content {
+	padding: 20px;
+}
+
+.center_pane ul {
+	list-style: none;
+}
+
+.center_pane ul li {
+	text-index: 10px;
+}
+
+.center_pane a {
+	color: white;
+	text-decoration: none;
+}
+
+.center_pane a:hover {
+	text-decoration: underline;
+}
+
+.center_pane h1 {
+	font-size: 32pt;
+	margin-bottom: 40px;
+}
+
+.center_pane h3 {
+	font-size: 20pt;
+	margin-bottom: 24px;
+}
+
+.active_mode {
+	background-color: #fff;
+	color: black;
+}
