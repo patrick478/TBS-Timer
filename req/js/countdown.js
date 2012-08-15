@@ -31,6 +31,7 @@ $(document).ready(function() {
 	});
 	
 	$('#reset_button').click(function() {
+		$('#start_button').html("Start");
 		reset();
 	});
 	
@@ -126,6 +127,10 @@ function finished()
 
 function reset() {
 	pause();
+	$('#warmup_mode').removeClass('active_mode');
+	$('#cooldown_mode').removeClass('active_mode');
+	$('#prepare_mode').addClass('active_mode');
+	
 	mode = 0;
 	setupTimers();
 }
