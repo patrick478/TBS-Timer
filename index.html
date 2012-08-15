@@ -15,16 +15,10 @@
 				<h1>About</h1>
 				
 				<h3>Acidic Labs / Singing Timer</h3>
-				
-				Notable features:
-				<ul>
-					<li>Horribly hacked together using position: fixed</li>
-					<li>Powered entirely using client-side code (not new, but still cool!)</li>
-				</ul>
-				
+			
 				<br /><br />
 				
-				Requires a browser which supports css <i>box-sizing</i>. Almost all of them do. I added the -moz prefixed version also because Mozilla just can't seem to catch Firefox up on this one. D:
+				Requires a browser which supports css <i>box-sizing</i>. 
 				
 				<br /><br /><br /><br />
 				
@@ -47,8 +41,10 @@
 					<tr><td>Font Size</td><td><input type="text" name="fontsize" value="192" /></td></tr>
 					<tr><td colspan="2">&nbsp;</td></tr>
 					<tr><td colspan="2">Requires Reset to take effect</td></tr>
-					<tr><td>Prepare Time</td><td><input type="text" name="prepare" value="120" /></td></tr>
+					<tr><td>Prepare Time</td><td><input type="text" name="prepare" value="60" /></td></tr>
 					<tr><td>Rehearse Time</td><td><input type="text" name="rehearse" value="900" /></td></tr>
+					<tr><td>Leave Time</td><td><input type="text" name="cooldown" value="60" /></td></tr>
+
 				</table>
 				
 			</div>
@@ -61,7 +57,7 @@
 		<div class="bar" id="top_bar">	
 			<div class="display top active_mode" id="prepare_mode">Get Ready</div>
 			<div class="display top" id="warmup_mode">Rehearse</div>
-			<div class="display top" id="cooldown_mode">Cooldown</div>
+			<div class="display top" id="cooldown_mode">Leave</div>
 		</div>
 		
 		<!-- Top time slider -->

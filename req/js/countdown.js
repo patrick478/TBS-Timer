@@ -5,6 +5,7 @@ var currentTime = 0;
 // tracks which mode we are in.
 // 0 == prepare
 // 1 == rehearse
+// 2 == cooldown
 var mode = 0;
 
 var prepareTime = 60;
@@ -51,6 +52,8 @@ $(document).ready(function() {
 			prepareTime = $(this).val();
 		else if(field == 'rehearse')
 			rehearseTime = $(this).val();
+			else if(field == 'cooldown')
+			cooldownTime = $(this).val();
 	});
 	
 	setupTimers();
@@ -82,7 +85,7 @@ function tick()
 		max = prepareTime;
 	else if(mode == 1)
 		max =  rehearseTime;
-	else
+	else if(mode == 2)
 		max = cooldownTime;
 		
 	var percent = (((max - currentTime) / max) * 100)+1 + '%';
@@ -110,7 +113,16 @@ function finished()
 		setupTimers();
 		start();
 	}
+	 else if(mode==3){
+		mode = 0;
+		$('#cooldown_mode').removeClass('active_mode');
+		$('#prepare_mode').addClass('active_mode');
+		setupTimers();
+		start();
+		
+	}
 }
+
 
 function reset() {
 	pause();
@@ -122,8 +134,10 @@ function setupTimers()
 {	
 	if(mode == 0)
 		max = prepareTime;
-	else
+	else if (mode == 1)
 		max = rehearseTime;
+	else if (mode==2)
+		max = cooldownTime;
 	this.currentTime = max;
 	
 	$('.slider').stop().animate({width: '0%'}, 1100);
