@@ -6,11 +6,14 @@ var currentTime = 0;
 // 0 == prepare
 // 1 == rehearse
 // 2 == cooldown
-var mode = 0;
+var mode = 1;
 
-var prepareTime = 60;
-var rehearseTime = 900;
+var rehearseTime = 840;
 var cooldownTime = 60;
+
+var music = new Howl({
+  		urls: ['req/music.mp3']
+	});
 
 $(document).ready(function() {
 	$('.center_pane_close').click(function() {
@@ -45,9 +48,7 @@ $(document).ready(function() {
 	
 	$('input[type=text]').change(function() {
 		var field = $(this).prop('name');
-		if(field == 'vspace')
-			$('#clock').css('margin-top', $(this).val() + "px");
-		else if(field == 'fontsize')
+		if(field == 'fontsize')
 			$('#clock').css('font-size', $(this).val() + "pt");
 		else if(field == 'prepare')
 			prepareTime = $(this).val();
@@ -58,6 +59,8 @@ $(document).ready(function() {
 	});
 	
 	setupTimers();
+
+	
 });
 
 function zeroFill( number, width )
@@ -82,15 +85,26 @@ function tick()
 		return;
 	}
 	
-	if(mode == 0)
-		max = prepareTime;
-	else if(mode == 1)
+	if(mode == 1)
 		max =  rehearseTime;
 	else if(mode == 2)
 		max = cooldownTime;
 		
 	var percent = (((max - currentTime) / max) * 100)+1 + '%';
 	$('.slider').stop().animate({width: percent}, 1100);
+
+	if(currentTime < 120){
+		$('.slider').addClass("short_remaining");
+	}
+
+	if(currentTime < 31 ){
+		if(currentTime % 2 == 0){
+			$('body').css('background', '#4F0008');
+		}
+		else {
+			$('body').css('background', '#333');
+		}
+	}
 	
 	var minutes = Math.floor(currentTime / 60);
 	var seconds = Math.ceil(((currentTime / 60) - minutes) * 60);
@@ -103,24 +117,25 @@ function finished()
 	pause();
 	mode++;
 		
-	if(mode == 1) {
-		$('#prepare_mode').removeClass('active_mode');
-		$('#warmup_mode').addClass('active_mode');
-		setupTimers();
-		start();
-	} else if(mode == 2) {
+	if(mode == 2) {
 		$('#warmup_mode').removeClass('active_mode');
 		$('#cooldown_mode').addClass('active_mode');
 		setupTimers();
 		start();
+		music.play();
+
 	}
 	 else if(mode==3){
-		mode = 0;
+		mode = 1;
 		$('#cooldown_mode').removeClass('active_mode');
 		$('#prepare_mode').addClass('active_mode');
+		$('body').css('background', '#333');
 		setupTimers();
 		start();
-		
+		music.fade(1, 0, 2000);
+		music = new Howl({
+  			urls: ['req/music.mp3']
+  		});		
 	}
 }
 
@@ -131,15 +146,13 @@ function reset() {
 	$('#cooldown_mode').removeClass('active_mode');
 	$('#prepare_mode').addClass('active_mode');
 	
-	mode = 0;
+	mode = 1;
 	setupTimers();
 }
 
 function setupTimers()
 {	
-	if(mode == 0)
-		max = prepareTime;
-	else if (mode == 1)
+	if (mode == 1)
 		max = rehearseTime;
 	else if (mode==2)
 		max = cooldownTime;
